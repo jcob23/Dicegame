@@ -1,5 +1,7 @@
 package com.jcobproject.dicegame2.service;
 
+import android.widget.TextView;
+
 import com.jcobproject.dicegame2.MainActivity;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.List;
 public class GameDice1000Service {
 
     private final DiceRollerService diceRollerService = MainActivity.getDiceRollerService();
+    private final TotalCalculatorService totalCalculatorService = MainActivity.getTotalCalculatorService();
 
     private static boolean RULE_WINNING_SCORE_EQUALS_1000 = false;
 
@@ -38,15 +41,15 @@ public class GameDice1000Service {
                 playerScores.add(0);
         else
             playerScores.add(score);
-        
-
     }
 
-    public boolean checkScoreForWin(int score){
+    public boolean checkScoreForWin(ArrayList<Integer> playerScores, TextView textView){
+        int total = totalCalculatorService.calculateTotal(playerScores);
+        textView.setText("" + total);
         if(RULE_WINNING_SCORE_EQUALS_1000){
-            return winningConditionEqual(score);
+            return winningConditionEqual(total);
         }else {
-            return winningConditionOver(score);
+            return winningConditionOver(total);
         }
     }
 

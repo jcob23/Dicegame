@@ -15,20 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.jcobproject.dicegame2.R;
 import com.jcobproject.dicegame2.service.GameDice1000Service;
-import com.jcobproject.dicegame2.service.TotalCalculatorService;
 
 import java.util.ArrayList;
 
-public class Fragment1000Game  extends Fragment {
+public class Fragment1000Game extends Fragment {
 
 
     private final GameDice1000Service gameDice1000Service = new GameDice1000Service();
-    private final TotalCalculatorService totalCalculatorService = new TotalCalculatorService();
+
     private final ArrayList<Integer> firstPlayerScores = new ArrayList<>();
     private final ArrayList<Integer> secondPlayerScores = new ArrayList<>();
-
-
-
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,15 +43,13 @@ public class Fragment1000Game  extends Fragment {
         FloatingActionButton rollBtnFirstPLayer = view.findViewById(R.id.rollBtnFirstPlayer);
         FloatingActionButton rollBtnSecondPlayer = view.findViewById(R.id.rollBtnSecondPlayer);
 
-        TextView playerTotalFirst = view.findViewById(R.id.player_total_first);
-        TextView playerTotalSecond = view.findViewById(R.id.player_total_second);
+        TextView firstPlayerTotal = view.findViewById(R.id.player_total_first);
+        TextView secondPlayerTotal = view.findViewById(R.id.player_total_second);
 
         rollBtnFirstPLayer.setOnClickListener(v -> {
             gameDice1000Service.rollTheDices(firstPlayerScores);
-            swapPlayersUI(listAdapterFirstPlayer,firstPlayerScores,rollBtnFirstPLayer,rollBtnSecondPlayer );
-            int totalScoreFirstPlayer = totalCalculatorService.calculateTotal(firstPlayerScores);
-            boolean isWinningScore = gameDice1000Service.checkScoreForWin(totalScoreFirstPlayer);
-            playerTotalFirst.setText("" + totalScoreFirstPlayer);
+            swapPlayersUI(listAdapterFirstPlayer, firstPlayerScores, rollBtnFirstPLayer, rollBtnSecondPlayer);
+            boolean isWinningScore = gameDice1000Service.checkScoreForWin(firstPlayerScores, firstPlayerTotal);
         });
 
 
@@ -65,23 +59,21 @@ public class Fragment1000Game  extends Fragment {
         recyclerViewSecondPlayer.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
         rollBtnSecondPlayer.setOnClickListener(v -> {
             gameDice1000Service.rollTheDices(secondPlayerScores);
-            swapPlayersUI(listAdapterFirstPlayer,firstPlayerScores,rollBtnSecondPlayer,rollBtnFirstPLayer );
-            playerTotalSecond.setText("" + totalCalculatorService.calculateTotal(secondPlayerScores));
+            swapPlayersUI(listAdapterFirstPlayer, firstPlayerScores, rollBtnSecondPlayer, rollBtnFirstPLayer);
+            boolean isWinningScore = gameDice1000Service.checkScoreForWin(secondPlayerScores, secondPlayerTotal);
 
         });
         TextView playerNameFirst = view.findViewById(R.id.player_name_first);
         TextView playerNameSecond = view.findViewById(R.id.player_name_second);
     }
 
-    private void swapPlayersUI(DiceResultListAdapter adapter, ArrayList<Integer> scores, FloatingActionButton visibleBtn, FloatingActionButton invisibleBtn){
+    private void swapPlayersUI(DiceResultListAdapter adapter, ArrayList<Integer> scores, FloatingActionButton visibleBtn, FloatingActionButton invisibleBtn) {
         adapter.notifyItemInserted(scores.size());
         visibleBtn.setVisibility(View.GONE);
         invisibleBtn.setVisibility(View.VISIBLE);
     }
-
 
 
 }
