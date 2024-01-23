@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/orange">
 
     <TextView
         android:id="@+id/player_name_first"
@@ -115,35 +116,36 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/gameFinishedCardView"
-        android:backgroundTint="@color/orange"
         android:layout_width="250dp"
         android:layout_height="200dp"
-        app:cardCornerRadius="16dp"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/orange"
         android:visibility="gone"
-        android:layout_centerInParent="true">
+        app:cardCornerRadius="16dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="18sp"
-            android:text="Congratulations"/>
+            android:text="Congratulations"
+            android:textSize="18sp" />
+
         <Button
             android:id="@+id/resetBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
             android:text="PLAY AGAIN"
-            android:textSize="11sp"
-            android:layout_gravity="bottom|end"/>
+            android:textSize="11sp" />
+
         <Button
             android:id="@+id/menuBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
             android:text="Main menu"
-            android:textSize="11sp"
-            android:layout_gravity="bottom|start"/>
-
-
-
+            android:textSize="11sp" />
     </androidx.cardview.widget.CardView>
+
 
 </RelativeLayout>

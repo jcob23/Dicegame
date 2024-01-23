@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Dicegame2</string>
+    <string name="pl_rules">
+        ZASADY GRY: \n
+        Gracz w swojej kolejce rzuca 5 koścmi K6, nasępnie może 2 razy przezucić kości.
+        Po każdym rzucie decyduje które kości odkłada, a którymi  rzuca ponownie.
+        Punkty liczy się jako sumę z kości odłożonych.\n
+        Zestawy uzyskuje się w jednym rzucie - nie można dokładać kości do już odłożonych w celu uzyskania większego zestawu.\n
+        Jeśli jednak nic nie wyrzuci (czyli nie może odłożyć żadnej kości) to punkty uzbierane w danej kolejce przepadają!
+        Wygrywa gracz który:\n
+        - uzyska równo 1000 punktów; jeżeli gracz rzuci większą liczbę punktów niż wymagane do 1000, traci punkty zdobyte w ostaniej kolejce i kończy ją.\n
+        - wyrzuci tysiąca czyli pięć jednakowych oczek z ręki w dowolnym momencie gry; nie ma znaczenia, czy jest to pierwszy rzut gracza w kolejce, czy po powtórnym rzutcie wszystkimi kośćmi.
+    </string>
+
+    <string name="pl_scores_table">
+        PUNKTACJA: \n
+        jedna piątka - 5 \n
+        jedna jedynka - 10 \n
+        Zestawy: \n
+        dwie piątki - 10 \n
+        dwie jedynki - 20 \n
+        trzy jedynki - 100 \n
+        trzy te same - wartość oczka razy 10 \n
+        cztery jedynki - 200 \n
+        cztery te same - wartość oczka razy 20 \n
+        pięć oczek po kolei (strit) - 150 \n
+        pięć tych samych oczek - 1000
+</string>
+
 </resources>

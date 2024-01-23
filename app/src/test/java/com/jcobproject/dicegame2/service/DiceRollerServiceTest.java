@@ -14,7 +14,7 @@ public class DiceRollerServiceTest {
     @ParameterizedTest
     @MethodSource
     public void testCalculateScore(int[] input, int expected) {
-        GameDice1000Service gameDice1000Service = new GameDice1000Service();
+        GameDice1000Service gameDice1000Service = GameDice1000Service.getInstance();
 
         int result = gameDice1000Service.calculateScore(input);
 

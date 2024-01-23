@@ -2,12 +2,16 @@ package com.jcobproject.dicegame2.viewElements;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,10 +25,11 @@ import java.util.ArrayList;
 public class Fragment1000Game extends Fragment {
 
 
-    private final GameDice1000Service gameDice1000Service = new GameDice1000Service();
+    private final GameDice1000Service gameDice1000Service = GameDice1000Service.getInstance();
 
     private final ArrayList<Integer> firstPlayerScores = new ArrayList<>();
     private final ArrayList<Integer> secondPlayerScores = new ArrayList<>();
+
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +72,9 @@ public class Fragment1000Game extends Fragment {
         });
         TextView playerNameFirst = view.findViewById(R.id.player_name_first);
         TextView playerNameSecond = view.findViewById(R.id.player_name_second);
+
+
+
     }
 
     private void swapPlayersUI(DiceResultListAdapter adapter, ArrayList<Integer> scores, FloatingActionButton visibleBtn, FloatingActionButton invisibleBtn) {
@@ -74,6 +82,7 @@ public class Fragment1000Game extends Fragment {
         visibleBtn.setVisibility(View.GONE);
         invisibleBtn.setVisibility(View.VISIBLE);
     }
+
 
 
 }

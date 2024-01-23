@@ -1,12 +1,18 @@
 package com.jcobproject.dicegame2.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
 public class DiceRollerService {
+
+    private final static DiceRollerService diceRollerService = new DiceRollerService();
+
+    public static DiceRollerService getInstance(){
+        return diceRollerService;
+    }
+
+    private DiceRollerService() {
+    }
 
     private int rollD6Dice() {
         Random random = new Random();
