@@ -25,7 +25,7 @@ The application facilitates a dice game where each player rolls five six-sided d
 - Rules can be modified to cater to the preferences of the players.
 
 ## To-Do
-Players can`t reroll dicies rign now, witch is crucial mechanic
+Players can't reroll dice right now, which is crucial mechanic
 
 The following enhancements are planned for the project:
 * Implement dice rolling animation.
