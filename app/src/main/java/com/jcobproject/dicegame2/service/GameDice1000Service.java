@@ -1,6 +1,6 @@
 package com.jcobproject.dicegame2.service;
 
-import android.widget.TextView;
+import com.jcobproject.dicegame2.Entity.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,9 +24,9 @@ public class GameDice1000Service {
     }
 
 
-    public void rollTheDices(ArrayList<Integer> playerScores) {
-        int[] rolledDices = diceRollerService.roll5D6();
-        int score = calculateScore(rolledDices);
+
+
+    public void addResultToPlayerScore(ArrayList<Integer> playerScores, int score){
         if (RULE_SCORE_MIN_50) {
             if (score > 50) {
                 playerScores.add(score);
@@ -38,14 +38,15 @@ public class GameDice1000Service {
         }
     }
 
-    public boolean checkScoreForWin(ArrayList<Integer> playerScores, TextView textView) {
-        int total = calculateTotal(playerScores);
-        textView.setText("" + total);
+    public boolean checkScoreForWin(Player player) {
+        int total = calculateTotal(player.getScores());
+        player.setTotalPoints(total);
         if (RULE_WINNING_SCORE_EQUALS_1000) {
             return winningConditionEqual(total);
         } else {
             return winningConditionOver(total);
         }
+
     }
     private int calculateTotal(ArrayList<Integer> playerResults) {
         return playerResults.stream().reduce(Integer::sum).orElse(0);
